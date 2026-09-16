@@ -1,16 +1,18 @@
 # Bug Bounty Journey
 
-**My journey into cybersecurity, with a focus on web application security and bug bounty hunting.**
+**My journey into cybersecurity, with a focus on web application security, penetration testing and bug bounty hunting.**
 
-**Current Progress**
+**I'm documenting what I learn, the labs I complete, projects I build, and lessons I pick up along the way.**
 
-- TryHackMe Pre-Security ✅
-- TryHackMe Cyber Security 101 ✅
-- TryHackMe Jr Penetration Tester 
+# Roadmap
+
+- TryHackMe - Pre-Security ✅
+- TryHackMe - Cyber Security 101 ✅
+- TryHackMe - Jr Penetration Tester 
 - PortSwigger Web Security Academy
-- First bug bounty submission
+- First authorised bug bounty submission
 
-**What I'm Learning**
+# What I'm Learning
 
 - Linux
 - Networking
@@ -22,9 +24,13 @@
 - Vulnerability research
 - Vulnerability reporting
 
+# Projects & Write-ups
+
+I'll add projects, lab write-ups, scripts, and other security research here as I progress.
+
 # Goal
 
-**Build practical skills in web application security and eventually participate in authorised bug bounty programs.**
+**Build practical web application security skills and eventually submit valid findings to authorised bug bounty programs**
 
 # ⚠️  Disclaimer
 
