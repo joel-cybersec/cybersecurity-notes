@@ -27,7 +27,7 @@
 
 # Projects & Write-ups
 
-I'll add projects, lab write-ups, scripts, and other security research here as I progress.
+My practical work is documented seperately in my [security-writeups](https://github.com/joel-cybersec/security-writeups) repository.
 
 # Goal
 
