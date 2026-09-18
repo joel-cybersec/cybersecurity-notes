@@ -1,8 +1,8 @@
-# Bug Bounty Journey
+# cybersecurity-notes
 
 **My journey into cybersecurity, with a focus on web application security, penetration testing and bug bounty hunting.**
 
-**I'm documenting what I learn, the labs I complete, projects I build, and lessons I pick up along the way.**
+**I'm documenting what I learn, the labs I complete, projects I build, and lessons I pick up along the way. This repo will act as my own personal learning journal - expect messy disorganised thoughts whilst I grapple with understanding!**
 
 # Roadmap
 
