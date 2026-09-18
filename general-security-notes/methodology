@@ -1,7 +1,0 @@
-**Methodology** - Infrastructure engagement
-
-1) Reconnaisance/Enumeration - What do we know and what do we need to know?
-2) Vulnerability Analysis - Analyse results of enumeration and connect weaknesses discovered.
-3) Initial Access - Choose and execute an attack - Initial foothold in the target. 
-4) Privilege escalation - Enumerate from the inside and find a way up. 
-5) Reporting - Document findings and attack chain to communicate to shareholders. Report on risk level and recommend actions to remediate issues. 
