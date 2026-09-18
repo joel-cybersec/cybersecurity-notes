@@ -23,6 +23,7 @@
 - Reconnaissance
 - Vulnerability research
 - Vulnerability reporting
+- General Penetration Testing 
 
 # Projects & Write-ups
 
