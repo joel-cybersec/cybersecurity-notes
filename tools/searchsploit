@@ -1,0 +1,3 @@
+On Kali, there is a package called searchsploit that allows you to search the Exploit-DB database to find vulnerabilities and gives affected versions.
+
+Basic Syntax = searchsploit (target service)
