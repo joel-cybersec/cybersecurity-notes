@@ -1,0 +1,110 @@
+Generic Passive Reconnaisance Notes
+
+Passive reconnaisance refers to gathering information on the target from publicly available sources such as whois, DNS lookup, shodan etc. 
+
+Active reconnaisance on the other hand involves interacting with the target network such as port scanning, vulnerability scanning etc which involves a risk of detection. 
+
+#CommonPassiveReconnaisancetechniques
+
+Querying DNS records from public resolvers - A, MX, TXT etc.
+Searching certificate logs - find subdomains and issued certificates. 
+Social media - Viewing job postings on LinkedIn etc to find tech stack information 
+Reading public news, press releases or leaked documents on paste sites. 
+Checking for exposed IoT devices on shodan censys. 
+Scanning public GitHub repositories for hardcoded credentials or config files. 
+
+#ActiveReconnaisanceTechniques 
+
+(can be logged, tracked and observed)
+
+Sending packets to discover live hosts - ICMP pings, ARP Requests. 
+Port Scanning or service enumeration - e.g. nmap 
+Interacting with web applications or API's - brute-forcing directories.
+Social engineering attempts - Phishing, vishing, pretexting phone calls. 
+Physical approaches - tailgating etc. 
+
+#Whois 
+
+Query/response protocol that provides registration details for domains. Domain registrars maintain these records. 
+
+Listens on TCP port 43.
+
+**Details in a Whois response 
+
+Registrar - The company that registered the domain. 
+Registrant Contact Information - Name, address, phone, email etc. - Commonly not listed now due to privacy restrictions. 
+Dates - Creation date, updated and expiration. 
+Name Servers - The Authoritative DNS server for the domain. 
+Status Codes - For example, clienttransferprohibited to indicate the domain is locked against unauthorised transfers. 
+Abuse Contacts - The domain registrars email and phone information. 
+
+**RDAP - Registration Data Access Protocol 
+
+As of 2015, Whois is deprecated and has been replaced by a modern RDAP protocol which uses curl to query an RDAP endpint e.g. verisign for .com domains. 
+
+Ouputs are machine readable, uses HTTPS, supports internationalisation and better privacy controls. 
+
+#nslookup-dig
+
+Still active reconnaisance by querying public DNS records. Used to reveal IP addresses, mail servers, reveal TXT records etc. 
+
+Both nslookup and dig query DNS records but dig should be the default because it provides cleaner output display TTL values of cached records and is more reliable for complex scripting. 
+
+nslookup is available on windows but dig should be default. 
+
+**nslookup - name server lookup 
+
+Older of the two tools. 
+
+Basic syntax - nslookup domain_name 
+
+or 
+
+nslookup -type=TYPE domain_name [server]
+
+-type specifies record type. 
+
+Common DNS record types - 
+
+A - IPv4 addresses for the domain 
+AAAA - IPv6 addresses for the domain 
+CNAME - Canonical name - an alias that points one domain to another. 
+MX - The server responsible for handling email for the domain. 
+SOA - Start of authority. Primary name server, admin email and zone serial number.
+TXT - Text records. Arbitrary text used for protocols etc. 
+
+#DIG
+
+DIG is the modern, preferred DNS query tool. 
+
+Basic Syntax - dig @server domain_name [TYPE]
+
+#Other-OSINT-DNS-tools 
+
+DNSDumpster is free, online tool used in passive reconnaisance to identify subdomains. Results are taken from search engines and other sources. Useful for identifying other attack surfaces or hidden/forgotten subdomains in a passive way. 
+
+Another good resource for finding subdomains in passive reconnaisance is crt.sh. Often shows 10-100 times more subdomains than DNSDumpster. 
+
+#Shodanio
+
+An online search engine for IoT devices. Free for basic searches. Where Google is a search engine for web pages, Shodan is for internet-connected devices. 
+
+Shodan constantly crawls IPv4 and IPv6 addresses. Searching for a domain reveals hosts connected with the domain and finds open ports/services on a given host.
+
+**Search filters for Shodan.IO
+
+hostname:example.com - Matches a specific hostname. 
+org:"example" - filters by organisation name. 
+port:PORTNUMBER country:EXAMPLE - Filters by port and country
+http.component:"techstack" - Identifies technology stack if exposed. 
+
+
+
+
+
+
+
+
+
+
+
