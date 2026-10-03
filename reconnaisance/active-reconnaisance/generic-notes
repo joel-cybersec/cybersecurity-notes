@@ -1,0 +1,85 @@
+Active reconnaisance is the process of gathering information on the target in an active way, by interacting with the target. involves sending packets to the target.
+
+Leaves a trace in the form of log entries, IDS triggers, honeypot triggers etc. 
+
+**Critical Rule: Never engage in active reconnaisance without explicit, written permission from the target. Active reconnaisance is illegal in most jurisdictions without permission. ** 
+
+#Web-browser
+
+Browsers conect to TCP port 80 by default for HTTP. TCP Port 443 is standard for HTTPS which most sites redirect to automatically.
+
+Developer tools are accessible via Ctrl + SHift + I in most browsers. Inside developer tools are multiple tabs containing various information useful for active reconnaisance. 
+
+**Network** - Displays all requests ad responses in real time. 
+
+**Console** - Allows execution of JavaScript snippets directly in the browser. 
+
+**Sources** - Allows you to browse the source code of the website including HTML, JS, CSS etc. Often contains hardcoded API endpoints, directory structures or references to internal services, developer comments that were never meant to be public. 
+
+**Application** - Allows you to inspect cookies, local storage and session storage. Sometimes contain session tokens, API keys, authentication data etc accidentally exposed client-side. 
+
+**Security** - Provides certificate details including issuer, validity period and Subject Alternative Names (SANs). SANs often reveal additional subdomains or related domains belonging to the same target. 
+
+**Browser Extensions** 
+
+**FoxyProxy** - Allows switching between proxies such as burp suite, ZAP and SOCKS5 tunnels. Useful for routing traffic through different tools during an engagement. 
+
+**User-Agent Switcher and Manager** - Changes the user-agent string to emulate different browsers, operating systems or devices. Modern WAF's and CDN's detect suspicious or rapid user-agent changes. 
+
+**Wappalyzer** - Automatically identifies the technology stack used on the website. 
+
+#Ping 
+
+Send a small ICMP packet as an "Echo Request" and if the remote host is online it returns an "Echo Reply"
+
+On UNIX based systems, the number of pings can be specified with the -c 5 option where 5 is the number of pings. On windows, -n is the equivalent. 
+
+We can also ping a hostname in which case, a DNS resolution happens. 
+
+We can also specify an IP version with the -4 or -6 flags to specify if the hostname resolves to both IPv4 and IPv6 addresses. 
+
+Pings have a TTL (time-to-live) field which indicates how many routers the request can pass through before being dropped. In the case of Linux, 64 is typically used whilst on windows it's 128. 
+
+#traceroute
+
+traceroute command traces the route that packets take from your system to a target host. 
+
+Good for mapping network topology, seeing where latency occurs and mapping infrastructure
+
+Unix - command is traceroute [IP ADDRESS].
+
+Windows - tracert [IP ADDRESS]
+
+We can specify IPv6 addresses with the -6 option or the standalone traceroute6 command. 
+
+traceroute works by sending ICMP packets along the path. Each router decrements the TTL field in the IP header by one. traceroute will send incrementally increasing TTL packets starting at 1 until it reaches the target. 
+
+Some routers and configured to not send ICMP time-to-live exceeded messages to prevent reconnaisance. 
+
+On Linux, traceroute sends UDP datagrams by default. TCP can be configured using the -T option. 
+
+#telnet
+
+TELNET prtoocal was developed for connecting remotely via a command-line interface and operates on a default port of 23. The telnet command sends everything in cleartext and so from a security perspective the traffic is easy to intercept and read sensitive data. 
+
+Modern alternative is SSH. 
+
+Telnet is useful because it operates over TCP and thus you can connect to any TCP port to observe the sercers response. This technique is called **Banner Grabbing**. Useful revealing software name and version of the service running on that port. 
+
+Once the software name and version has been uncovered by sending a HTTP request or other protocol specific commands, this can then be cross referenced with known vulnerabilities in databases such as CVE and Exploit-DB.
+
+#netcat
+
+Netcat (or nc) is a networking tools that supports both the TCP and UDP protocols. It ca function as a client that connects to a listening port, or a server that listens on a port of our choice. Modern versions such as ncat from the Nmap project also support IPv6 and SSL encryption. 
+
+Basic Syntax - 
+
+nc [IP-ADDRESS] [PORTNUMBER]
+
+To setup a listening server, nc -lnvp [PORT]
+
+add --ssl if encryption is required. 
+
+add -6 option for IPv6.
+
+
