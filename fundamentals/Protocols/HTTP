@@ -1,0 +1,18 @@
+# HTTP is the protocol used to transfer web pages. When our browser visits a website, it requests the HTML and assets from the web server. Similarly, when we submit a form, upload a photo or interact with the world wide web in any way, it is done via the HTTP or HTTPS protocol. 
+
+ - HTTPS is HTTP wrapped in TLS encryption. 
+ - Commands and structure are identical whether HTTP or HTTPS is used. 
+ - Tools like Burp Suite decrypt HTTPS traffic for analysis, showing raw HTTP.
+
+**Manually sending HTTP commands
+
+Connect to port 80 using - telnet [IP Address] 80
+
+Type GET /index.html HTTP/1.1
+Type host: example 
+
+This sends a HTTP GET request to the webserver for the index.html file which if the webserver can provide, returns a 200 OK HTTP response and the file in the body. 
+
+**What is contained in HTTP headers
+
+Contained in the HTTP response headers is the Server: field which contains the webserver software and version as well the OS. 
